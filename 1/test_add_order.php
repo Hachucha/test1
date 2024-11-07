@@ -27,16 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errorText = 'Ticket quantity is required';
         }
 //на типы данных количества и цены и допустимые значения
-        if (empty($ticket_kid_quantity)) {
+        if (!empty($ticket_kid_quantity)) {
             if (!is_numeric($ticket_kid_quantity) || $ticket_kid_quantity < 0) {
-                $errorText = 'Ticket adult quantity must be a positive number';
+                $errorText = 'Ticket kid quantity must be a positive number';
             } elseif (!is_numeric($ticket_kid_price) || $ticket_kid_price < 0) {
                 $errorText = 'Ticket kid price must be a positive number';
             }
         }
-        if (empty($ticket_adult_quantity)) {
+        if (!empty($ticket_adult_quantity)) {
             if (!is_numeric($ticket_adult_quantity) || $ticket_adult_quantity < 0) {
-                $errorText = 'Ticket adult quantity must be a positive number';
+                $errorText = 'Ticket adult quantity must be a positive number, current value: ' . $ticket_adult_quantity;
             } elseif (!is_numeric($ticket_adult_price) || $ticket_adult_price < 0) {
                 $errorText = 'Ticket adult price must be a positive number';
             }
