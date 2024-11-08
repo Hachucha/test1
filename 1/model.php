@@ -27,7 +27,7 @@ class Order_Model {
         $response = $responses[array_rand($responses)]; 
         error_log("Response: " . print_r($response, true)); 
 
-        return ["message" => 'order successfully booked'];
+        // return $responses[0];
         return $response; 
     }
 
@@ -38,11 +38,12 @@ class Order_Model {
             ['error' => 'no seats'],
             ['error' => 'fan removed']
         ];
+        $successResponce = ['message' => 'order successfully approved'];
         $isBooked = random_int(0, 1);
 
-        return ['message' => 'order successfully approved'];
+        // return $successResponce;
 
-        return $isBooked ? ['message' => 'order successfully approved'] : $errorResponses[array_rand($errorResponses)];
+        return $isBooked ? $successResponce : $errorResponses[array_rand($errorResponses)];
     }
 
     public function getOrders() {
